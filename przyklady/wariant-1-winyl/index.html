@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Strona prywatna - nie ma być indeksowana przez wyszukiwarki -->
+    <meta name="robots" content="noindex, nofollow" />
+    <title id="pageTitleTag">Studio Persona</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --base: #0a0a0f;
+        --elevated: #131319;
+        --elevated2: #1b1b24;
+        --line: #2a2a35;
+        --gold: #c9a15c;
+        --goldBright: #e8c77e;
+        --violet: #6b4fa0;
+        --ink: #f5f3ee;
+        --muted: #9b97a8;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--base);
+        color: var(--ink);
+        font-family: "Inter", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        min-height: 100vh;
+      }
+      h1,
+      h2 {
+        font-family: "Fraunces", serif;
+        font-weight: 500;
+      }
+      .wrap {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .eyebrow {
+        font-family: "JetBrains Mono", monospace;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-size: 0.72rem;
+        color: var(--gold);
+      }
+
+      /* HERO / DEDYKACJA */
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding: 70px 0 50px;
+        text-align: center;
+        background:
+          radial-gradient(
+            circle at 20% -10%,
+            rgba(107, 79, 160, 0.35),
+            transparent 45%
+          ),
+          radial-gradient(
+            circle at 90% 10%,
+            rgba(201, 161, 92, 0.18),
+            transparent 40%
+          );
+      }
+      .rings {
+        position: absolute;
+        right: -140px;
+        top: -60px;
+        width: 360px;
+        height: 360px;
+        pointer-events: none;
+      }
+      .ring {
+        position: absolute;
+        border-radius: 50%;
+        border: 1px solid rgba(201, 161, 92, 0.16);
+      }
+      .ring.r0 {
+        inset: 0;
+      }
+      .ring.r1 {
+        inset: 28px;
+      }
+      .ring.r2 {
+        inset: 56px;
+      }
+      .ring.r3 {
+        inset: 84px;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+        line-height: 1.15;
+        margin-top: 16px;
+      }
+      .hero h1 em {
+        font-style: italic;
+        color: var(--goldBright);
+      }
+      .hero .occasion {
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+      @media (min-width: 640px) {
+        .hero h1 {
+          font-size: 2.8rem;
+        }
+      }
+
+      /* PLAYER */
+      .player-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        border: 1px solid var(--line);
+        background: var(--elevated);
+        border-radius: 24px;
+        padding: 28px 22px;
+        margin: 40px 0;
+      }
+      @media (min-width: 600px) {
+        .player-card {
+          flex-direction: row;
+          padding: 32px;
+        }
+      }
+      .vinyl {
+        position: relative;
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        background: conic-gradient(from 0deg, #1b1b24, #0a0a0f 60%, #1b1b24);
+        box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+      }
+      .vinyl.spin {
+        animation: spin 6s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .vinyl .r1 {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        border: 1px solid rgba(201, 161, 92, 0.2);
+      }
+      .vinyl .r2 {
+        position: absolute;
+        inset: 10px;
+        border-radius: 50%;
+        border: 1px solid rgba(201, 161, 92, 0.15);
+      }
+      .vinyl .dot {
+        position: absolute;
+        inset: 42%;
+        border-radius: 50%;
+        background: var(--gold);
+      }
+      .player-body {
+        width: 100%;
+      }
+      .player-body h3 {
+        font-size: 1.05rem;
+        font-family: "Fraunces", serif;
+        font-weight: 500;
+      }
+      .controls {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-top: 16px;
+      }
+      .play-btn {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        flex-shrink: 0;
+        background: linear-gradient(90deg, var(--gold), var(--goldBright));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--base);
+      }
+      .seek-wrap {
+        flex: 1;
+      }
+      input[type="range"] {
+        width: 100%;
+        accent-color: var(--gold);
+        height: 4px;
+        cursor: pointer;
+      }
+      .time-row {
+        display: flex;
+        justify-content: space-between;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.68rem;
+        color: var(--muted);
+        margin-top: 6px;
+      }
+      .download-link {
+        display: inline-block;
+        margin-top: 14px;
+        font-size: 0.75rem;
+        color: var(--gold);
+      }
+
+      /* DEDYKACJA TEKST */
+      .message {
+        border: 1px solid var(--line);
+        background: var(--elevated);
+        border-radius: 20px;
+        padding: 28px;
+        font-family: "Fraunces", serif;
+        font-style: italic;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        color: var(--ink);
+        text-align: center;
+        margin-bottom: 50px;
+      }
+      .message .signature {
+        display: block;
+        margin-top: 16px;
+        font-style: normal;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+        color: var(--gold);
+        text-transform: uppercase;
+      }
+
+      /* GALERIA */
+      .gallery-head {
+        text-align: center;
+        margin-bottom: 24px;
+      }
+      .gallery-head h2 {
+        font-size: 1.5rem;
+      }
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding-bottom: 60px;
+      }
+      @media (min-width: 600px) {
+        .gallery {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      .gallery figure {
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        aspect-ratio: 1/1;
+        cursor: pointer;
+        background: var(--elevated);
+      }
+      .gallery img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.3s;
+      }
+      .gallery figure:hover img {
+        transform: scale(1.05);
+      }
+      .gallery figcaption {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 8px 10px;
+        font-size: 0.7rem;
+        color: var(--ink);
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+      }
+
+      /* LIGHTBOX */
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 10, 15, 0.92);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+        padding: 20px;
+      }
+      .lightbox.open {
+        display: flex;
+      }
+      .lightbox img {
+        max-width: 100%;
+        max-height: 85vh;
+        border-radius: 12px;
+      }
+      .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: var(--ink);
+        font-size: 1.8rem;
+        cursor: pointer;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px 20px 50px;
+        font-size: 0.72rem;
+        color: var(--muted);
+      }
+      footer a {
+        color: var(--gold);
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero wrap">
+      <div class="rings">
+        <div class="ring r0"></div>
+        <div class="ring r1"></div>
+        <div class="ring r2"></div>
+        <div class="ring r3"></div>
+      </div>
+      <p class="eyebrow">Studio Persona • dedykowana piosenka</p>
+      <h1 id="recipientName"></h1>
+      <p class="occasion" id="occasion"></p>
+    </section>
+
+    <main class="wrap">
+      <div class="player-card">
+        <div class="vinyl" id="vinyl">
+          <div class="r1"></div>
+          <div class="r2"></div>
+          <div class="dot"></div>
+        </div>
+        <div class="player-body">
+          <h3 id="songTitle"></h3>
+          <div class="controls">
+            <button class="play-btn" id="playBtn" aria-label="Odtwórz">
+              <svg
+                id="iconPlay"
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+              >
+                <path d="M3 2l11 6-11 6V2z" />
+              </svg>
+              <svg
+                id="iconPause"
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                style="display: none"
+              >
+                <rect x="3" y="2" width="4" height="12" />
+                <rect x="9" y="2" width="4" height="12" />
+              </svg>
+            </button>
+            <div class="seek-wrap">
+              <audio id="audio" preload="metadata"></audio>
+              <input type="range" id="seek" min="0" max="100" value="0" />
+              <div class="time-row">
+                <span id="curTime">0:00</span><span id="durTime">0:00</span>
+              </div>
+            </div>
+          </div>
+          <a class="download-link" id="downloadLink" download
+            >Pobierz plik MP3 ↓</a
+          >
+        </div>
+      </div>
+
+      <div class="message" id="messageBlock">
+        <span id="dedicationText"></span>
+        <span class="signature" id="signatureText"></span>
+      </div>
+
+      <div class="gallery-head" id="galleryHead">
+        <p class="eyebrow">Galeria</p>
+        <h2>Wasze wspomnienia</h2>
+      </div>
+
+      <div class="gallery" id="gallery"></div>
+    </main>
+
+    <footer>
+      Stworzone z miłością przez
+      <a id="footerLink" target="_blank" rel="noopener"></a>
+    </footer>
+
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+      <button
+        class="lightbox-close"
+        onclick="closeLightbox()"
+        aria-label="Zamknij"
+      >
+        &times;
+      </button>
+      <img id="lightboxImg" src="" alt="" />
+    </div>
+
+    <script src="config.js"></script>
+    <script>
+      document.getElementById("pageTitleTag").textContent = CONFIG.pageTitle;
+      document.getElementById("recipientName").innerHTML =
+        "Dla " + CONFIG.recipientName;
+      document.getElementById("occasion").textContent = CONFIG.occasion;
+      document.getElementById("songTitle").textContent =
+        "„" + CONFIG.songTitle + '"';
+
+      const audioEl = document.getElementById("audio");
+      audioEl.src = CONFIG.songFile;
+      const downloadLinkEl = document.getElementById("downloadLink");
+      downloadLinkEl.href = CONFIG.songFile;
+
+      const messageBlock = document.getElementById("messageBlock");
+      if (CONFIG.dedication && CONFIG.dedication.trim() !== "") {
+        document.getElementById("dedicationText").textContent =
+          "„" + CONFIG.dedication + '"';
+        document.getElementById("signatureText").textContent =
+          CONFIG.signature || "";
+      } else {
+        messageBlock.style.display = "none";
+      }
+
+      const galleryEl = document.getElementById("gallery");
+      const galleryHeadEl = document.getElementById("galleryHead");
+      if (CONFIG.photos && CONFIG.photos.length > 0) {
+        CONFIG.photos.forEach((photo) => {
+          const figure = document.createElement("figure");
+          figure.addEventListener("click", () => openLightbox(photo.src));
+          const img = document.createElement("img");
+          img.src = photo.src;
+          img.alt = photo.caption || "";
+          img.loading = "lazy";
+          figure.appendChild(img);
+          if (photo.caption) {
+            const caption = document.createElement("figcaption");
+            caption.textContent = photo.caption;
+            figure.appendChild(caption);
+          }
+          galleryEl.appendChild(figure);
+        });
+      } else {
+        galleryEl.style.display = "none";
+        galleryHeadEl.style.display = "none";
+      }
+
+      const footerLinkEl = document.getElementById("footerLink");
+      footerLinkEl.href = CONFIG.footerLinkUrl;
+      footerLinkEl.textContent = CONFIG.footerLinkLabel;
+
+      const audio = document.getElementById("audio");
+      const playBtn = document.getElementById("playBtn");
+      const iconPlay = document.getElementById("iconPlay");
+      const iconPause = document.getElementById("iconPause");
+      const seek = document.getElementById("seek");
+      const curTime = document.getElementById("curTime");
+      const durTime = document.getElementById("durTime");
+      const vinyl = document.getElementById("vinyl");
+      function fmt(s) {
+        if (!isFinite(s)) return "0:00";
+        const m = Math.floor(s / 60),
+          sec = Math.floor(s % 60);
+        return m + ":" + String(sec).padStart(2, "0");
+      }
+      audio.addEventListener("loadedmetadata", () => {
+        durTime.textContent = fmt(audio.duration);
+      });
+      audio.addEventListener("timeupdate", () => {
+        curTime.textContent = fmt(audio.currentTime);
+        seek.value = audio.duration
+          ? (audio.currentTime / audio.duration) * 100
+          : 0;
+      });
+      audio.addEventListener("ended", () => {
+        playBtn.click();
+      });
+      playBtn.addEventListener("click", () => {
+        if (audio.paused) {
+          audio.play();
+          iconPlay.style.display = "none";
+          iconPause.style.display = "block";
+          vinyl.classList.add("spin");
+        } else {
+          audio.pause();
+          iconPlay.style.display = "block";
+          iconPause.style.display = "none";
+          vinyl.classList.remove("spin");
+        }
+      });
+      seek.addEventListener("input", (e) => {
+        if (audio.duration)
+          audio.currentTime = (e.target.value / 100) * audio.duration;
+      });
+
+      function openLightbox(src) {
+        document.getElementById("lightboxImg").src = src;
+        document.getElementById("lightbox").classList.add("open");
+      }
+      function closeLightbox() {
+        document.getElementById("lightbox").classList.remove("open");
+      }
+    </script>
+  </body>
+</html>

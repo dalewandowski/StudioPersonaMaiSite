@@ -1,0 +1,1533 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Studio Persona — dedykowana piosenka na prezent | Piosenka na zamówienie
+    </title>
+    <meta
+      name="description"
+      content="Zamów autorską, spersonalizowaną piosenkę na prezent — na urodziny, rocznicę, zaręczyny czy ślub. Trzy pakiety: AIR, TAPE i PRO, już od 49 zł. Gotowy utwór nawet w kilka godzin."
+    />
+    <link rel="canonical" href="https://studiopersona.pl/" />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pl_PL" />
+    <meta property="og:url" content="https://studiopersona.pl/" />
+    <meta property="og:site_name" content="Studio Persona" />
+    <meta
+      property="og:title"
+      content="Studio Persona — dedykowana piosenka na prezent"
+    />
+    <meta
+      property="og:description"
+      content="Zamów autorską, spersonalizowaną piosenkę na prezent — na urodziny, rocznicę, zaręczyny czy ślub. Gotowy utwór nawet w kilka godzin."
+    />
+    <!-- PODMIEN: dodaj własny obrazek 1200x630px i wgraj do assets/og-image.jpg -->
+    <meta
+      property="og:image"
+      content="https://studiopersona.pl/assets/og-image.jpg"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Studio Persona — dedykowana piosenka na prezent"
+    />
+    <meta
+      name="twitter:description"
+      content="Zamów autorską, spersonalizowaną piosenkę na prezent — na urodziny, rocznicę, zaręczyny czy ślub."
+    />
+    <meta
+      name="twitter:image"
+      content="https://studiopersona.pl/assets/og-image.jpg"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Studio Persona",
+        "url": "https://studiopersona.pl/",
+        "description": "Tworzymy autorskie, spersonalizowane piosenki na zamowienie - prezenty na urodziny, rocznice, zareczyny i inne okazje.",
+        "email": "kontakt@studiopersona.pl",
+        "areaServed": "PL"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Tworzenie spersonalizowanych piosenek na zamowienie",
+        "provider": { "@type": "Organization", "name": "Studio Persona" },
+        "areaServed": "PL",
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Pakiet AIR",
+            "price": "49",
+            "priceCurrency": "PLN"
+          },
+          {
+            "@type": "Offer",
+            "name": "Pakiet TAPE",
+            "price": "69",
+            "priceCurrency": "PLN"
+          },
+          {
+            "@type": "Offer",
+            "name": "Pakiet PRO",
+            "price": "139",
+            "priceCurrency": "PLN"
+          }
+        ]
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --base: #0a0a0f;
+        --elevated: #131319;
+        --elevated2: #1b1b24;
+        --line: #2a2a35;
+        --gold: #c9a15c;
+        --goldBright: #e8c77e;
+        --violet: #6b4fa0;
+        --ink: #f5f3ee;
+        --muted: #9b97a8;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--base);
+        color: var(--ink);
+        font-family: "Inter", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Fraunces", serif;
+        font-weight: 500;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .eyebrow {
+        font-family: "JetBrains Mono", monospace;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-size: 0.72rem;
+        color: var(--gold);
+        margin-bottom: 12px;
+      }
+      .btn-gold {
+        display: inline-block;
+        border: none;
+        cursor: pointer;
+        background: linear-gradient(90deg, var(--gold), var(--goldBright));
+        color: var(--base);
+        font-weight: 600;
+        font-size: 0.85rem;
+        padding: 14px 30px;
+        border-radius: 999px;
+        transition: filter 0.2s;
+      }
+      .btn-gold:hover {
+        filter: brightness(1.1);
+      }
+      .btn-outline {
+        display: inline-block;
+        border: 1px solid var(--line);
+        background: transparent;
+        color: var(--ink);
+        font-size: 0.85rem;
+        padding: 14px 30px;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: border-color 0.2s;
+      }
+      .btn-outline:hover {
+        border-color: var(--gold);
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        background: rgba(10, 10, 15, 0.8);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(42, 42, 53, 0.6);
+      }
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 20px;
+        max-width: 1120px;
+        margin: 0 auto;
+      }
+      .logo {
+        font-family: "Fraunces", serif;
+        font-size: 1.25rem;
+        display: flex;
+        gap: 6px;
+        align-items: baseline;
+      }
+      .logo .s1 {
+        font-style: italic;
+        color: var(--goldBright);
+      }
+      nav.desktop {
+        display: none;
+        align-items: center;
+        gap: 32px;
+      }
+      nav.desktop a.navlink {
+        font-size: 0.875rem;
+        color: var(--muted);
+        transition: color 0.2s;
+      }
+      nav.desktop a.navlink:hover {
+        color: var(--ink);
+      }
+      .burger {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        width: 36px;
+        height: 36px;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+      .burger span {
+        width: 24px;
+        height: 1px;
+        background: var(--ink);
+        transition: 0.25s;
+      }
+      .burger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .burger.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .burger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+      .mobile-nav {
+        display: none;
+        border-top: 1px solid rgba(42, 42, 53, 0.6);
+        background: var(--base);
+        padding: 16px 20px 24px;
+      }
+      .mobile-nav.open {
+        display: block;
+      }
+      .mobile-nav ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding-top: 8px;
+      }
+      .mobile-nav a.navlink {
+        font-size: 1rem;
+        color: var(--muted);
+      }
+      @media (min-width: 768px) {
+        nav.desktop {
+          display: flex;
+        }
+        .burger {
+          display: none;
+        }
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding: 150px 0 70px;
+        background:
+          radial-gradient(
+            circle at 20% -10%,
+            rgba(107, 79, 160, 0.35),
+            transparent 45%
+          ),
+          radial-gradient(
+            circle at 90% 10%,
+            rgba(201, 161, 92, 0.18),
+            transparent 40%
+          );
+      }
+      .rings {
+        position: absolute;
+        right: -160px;
+        top: 96px;
+        width: 420px;
+        height: 420px;
+        pointer-events: none;
+      }
+      .ring {
+        position: absolute;
+        border-radius: 50%;
+        border: 1px solid rgba(201, 161, 92, 0.18);
+      }
+      .ring.r0 {
+        inset: 0;
+      }
+      .ring.r1 {
+        inset: 32px;
+      }
+      .ring.r2 {
+        inset: 64px;
+      }
+      .ring.r3 {
+        inset: 96px;
+      }
+      .hero-inner {
+        position: relative;
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 20px;
+        text-align: center;
+      }
+      .hero h1 {
+        font-size: 2.4rem;
+        line-height: 1.1;
+        color: var(--ink);
+      }
+      .hero h1 em {
+        font-style: italic;
+        color: var(--goldBright);
+      }
+      .hero p.lead {
+        max-width: 560px;
+        margin: 22px auto 0;
+        color: var(--muted);
+        font-size: 1rem;
+      }
+      .hero .ctas {
+        margin-top: 34px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+        justify-content: center;
+      }
+      @media (min-width: 640px) {
+        .hero h1 {
+          font-size: 3.6rem;
+        }
+        .hero .ctas {
+          flex-direction: row;
+        }
+      }
+
+      .player-section {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 70px 20px;
+      }
+      .player-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        border: 1px solid var(--line);
+        background: var(--elevated);
+        border-radius: 24px;
+        padding: 36px 24px;
+      }
+      @media (min-width: 640px) {
+        .player-card {
+          flex-direction: row;
+          padding: 40px;
+        }
+      }
+      .vinyl {
+        position: relative;
+        width: 112px;
+        height: 112px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        background: conic-gradient(from 0deg, #1b1b24, #0a0a0f 60%, #1b1b24);
+        box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+      }
+      .vinyl.spin {
+        animation: spin 6s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .vinyl .ring1 {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        border: 1px solid rgba(201, 161, 92, 0.2);
+      }
+      .vinyl .ring2 {
+        position: absolute;
+        inset: 12px;
+        border-radius: 50%;
+        border: 1px solid rgba(201, 161, 92, 0.15);
+      }
+      .vinyl .dot {
+        position: absolute;
+        inset: 42%;
+        border-radius: 50%;
+        background: var(--gold);
+      }
+      .player-body {
+        width: 100%;
+      }
+      .player-body h3 {
+        font-size: 1.2rem;
+        margin-top: 4px;
+      }
+      .controls {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-top: 20px;
+      }
+      .play-btn {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        flex-shrink: 0;
+        background: linear-gradient(90deg, var(--gold), var(--goldBright));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--base);
+      }
+      .seek-wrap {
+        flex: 1;
+      }
+      input[type="range"] {
+        width: 100%;
+        accent-color: var(--gold);
+        height: 4px;
+        cursor: pointer;
+      }
+      .time-row {
+        display: flex;
+        justify-content: space-between;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.7rem;
+        color: var(--muted);
+        margin-top: 8px;
+      }
+
+      .steps-section {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 70px 20px;
+      }
+      .section-head {
+        text-align: center;
+        margin-bottom: 48px;
+      }
+      .section-head h2 {
+        font-size: 1.9rem;
+      }
+      @media (min-width: 768px) {
+        .section-head h2 {
+          font-size: 2.3rem;
+        }
+      }
+      ol.steps {
+        list-style: none;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      ol.steps li {
+        display: flex;
+        gap: 24px;
+        padding: 24px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      ol.steps li:last-child {
+        border-bottom: none;
+      }
+      ol.steps .track {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.85rem;
+        color: var(--gold);
+        flex-shrink: 0;
+        width: 28px;
+      }
+      ol.steps h3 {
+        font-size: 1.1rem;
+      }
+      ol.steps p {
+        font-size: 0.875rem;
+        color: var(--muted);
+        margin-top: 4px;
+      }
+
+      .packages-section {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 70px 20px;
+      }
+      .packages-grid {
+        display: grid;
+        gap: 24px;
+        grid-template-columns: 1fr;
+      }
+      @media (min-width: 768px) {
+        .packages-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      .pkg-card {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--line);
+        background: var(--elevated);
+        border-radius: 24px;
+        padding: 32px;
+      }
+      .pkg-card.featured {
+        border-color: var(--gold);
+        background: var(--elevated2);
+        box-shadow: 0 0 40px -12px rgba(201, 161, 92, 0.35);
+      }
+      .badge {
+        display: inline-block;
+        width: fit-content;
+        background: rgba(201, 161, 92, 0.15);
+        color: var(--goldBright);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.62rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 4px 12px;
+        border-radius: 999px;
+        margin-bottom: 16px;
+      }
+      .pkg-format {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        color: var(--gold);
+      }
+      .pkg-card h3 {
+        font-size: 1.4rem;
+        margin-top: 8px;
+      }
+      .pkg-price {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-top: 4px;
+      }
+      .pkg-tagline {
+        font-size: 0.875rem;
+        color: var(--muted);
+        margin-top: 10px;
+      }
+      .pkg-features {
+        margin-top: 22px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .pkg-features .feat {
+        display: flex;
+        gap: 8px;
+        font-size: 0.875rem;
+        color: rgba(245, 243, 238, 0.9);
+      }
+      .pkg-features .feat::before {
+        content: "";
+        width: 4px;
+        height: 4px;
+        margin-top: 8px;
+        border-radius: 50%;
+        background: var(--gold);
+        flex-shrink: 0;
+      }
+      .pkg-select {
+        margin-top: 28px;
+        display: block;
+        text-align: center;
+        border-radius: 999px;
+        padding: 12px 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        cursor: pointer;
+        border: 1px solid var(--line);
+        background: transparent;
+        color: var(--ink);
+      }
+      .pkg-card.featured .pkg-select {
+        background: linear-gradient(90deg, var(--gold), var(--goldBright));
+        color: var(--base);
+        border: none;
+      }
+
+      .order-section {
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 0 20px 70px;
+      }
+      .order-form {
+        border: 1px solid var(--line);
+        background: var(--elevated);
+        border-radius: 24px;
+        padding: 28px 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      @media (min-width: 640px) {
+        .order-form {
+          padding: 36px;
+        }
+      }
+      .field-label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 0.85rem;
+      }
+      .row2 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      @media (min-width: 600px) {
+        .row2 {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .order-form input[type="text"],
+      .order-form input[type="email"],
+      .order-form textarea {
+        width: 100%;
+        border: 1px solid var(--line);
+        background: var(--base);
+        color: var(--ink);
+        padding: 12px 14px;
+        border-radius: 12px;
+        font-size: 0.875rem;
+        font-family: inherit;
+      }
+      .order-form input::placeholder,
+      .order-form textarea::placeholder {
+        color: rgba(155, 151, 168, 0.6);
+      }
+      .order-form input:focus,
+      .order-form textarea:focus {
+        outline: 2px solid var(--goldBright);
+        outline-offset: 2px;
+        border-color: var(--gold);
+      }
+      .check-block {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        border-top: 1px solid var(--line);
+        padding-top: 18px;
+      }
+      .check-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 0.72rem;
+        color: var(--muted);
+      }
+      .check-row input {
+        margin-top: 3px;
+        accent-color: var(--gold);
+        flex-shrink: 0;
+      }
+      .check-row a {
+        color: var(--gold);
+        text-decoration: underline;
+      }
+      .form-error {
+        color: #f87171;
+        font-size: 0.8rem;
+      }
+      .form-note {
+        text-align: center;
+        font-size: 0.72rem;
+        color: var(--muted);
+      }
+      .pkg-toggle {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+      .pkg-toggle button {
+        border: 1px solid var(--line);
+        background: transparent;
+        color: var(--muted);
+        border-radius: 12px;
+        padding: 10px 8px;
+        font-size: 0.8rem;
+        cursor: pointer;
+      }
+      .pkg-toggle button.active {
+        border-color: var(--gold);
+        background: rgba(201, 161, 92, 0.1);
+        color: var(--goldBright);
+      }
+
+      .style-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-top: 10px;
+      }
+      @media (max-width: 520px) {
+        .style-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .style-card {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        overflow: hidden;
+        cursor: pointer;
+        background: var(--elevated);
+        transition: border-color 0.15s;
+      }
+      .style-card img {
+        width: 100%;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+        display: block;
+      }
+      .style-card .style-name {
+        font-family: "Fraunces", serif;
+        font-size: 0.95rem;
+        padding: 10px 12px 0;
+        color: var(--ink);
+      }
+      .style-card .style-desc {
+        font-size: 0.75rem;
+        color: var(--muted);
+        padding: 2px 12px 12px;
+      }
+      .style-card.active {
+        border-color: var(--gold);
+        box-shadow: 0 0 0 1px var(--gold);
+      }
+      .style-preview-link {
+        display: block;
+        font-size: 0.72rem;
+        color: var(--gold);
+        text-align: center;
+        padding: 0 12px 12px;
+        text-decoration: underline;
+      }
+      .style-preview-link:hover {
+        color: var(--goldBright);
+      }
+      .photo-note {
+        font-size: 0.85rem;
+        color: var(--ink);
+        margin-top: 14px;
+        background: rgba(201, 161, 92, 0.1);
+        border: 1px solid var(--gold);
+        border-left: 3px solid var(--gold);
+        border-radius: 12px;
+        padding: 12px 14px;
+      }
+      .photo-note strong {
+        color: var(--goldBright);
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 40px 20px;
+      }
+      .footer-inner {
+        max-width: 1120px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 0.75rem;
+        color: var(--muted);
+        text-align: center;
+      }
+      @media (min-width: 640px) {
+        .footer-inner {
+          flex-direction: row;
+        }
+      }
+      .footer-links {
+        display: flex;
+        gap: 24px;
+      }
+      .footer-links a:hover {
+        color: var(--ink);
+      }
+
+      .cookie-banner {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 50;
+        background: rgba(19, 19, 25, 0.95);
+        backdrop-filter: blur(10px);
+        border-top: 1px solid var(--line);
+      }
+      .cookie-inner {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 16px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+        text-align: center;
+      }
+      @media (min-width: 640px) {
+        .cookie-inner {
+          flex-direction: row;
+          text-align: left;
+        }
+      }
+      .cookie-inner p {
+        font-size: 0.75rem;
+        color: var(--muted);
+      }
+      .cookie-inner a {
+        color: var(--gold);
+        text-decoration: underline;
+      }
+      .cookie-inner button {
+        flex-shrink: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-inner">
+        <a href="#" class="logo"
+          ><span class="s1">Studio</span><span>Persona</span></a
+        >
+        <nav class="desktop">
+          <a class="navlink" href="#jak-to-dziala">Jak to działa</a>
+          <a class="navlink" href="#pakiety">Pakiety</a>
+          <a class="navlink" href="#zamow">Zamów</a>
+          <a class="btn-gold" href="#zamow">Zamów piosenkę</a>
+        </nav>
+        <button class="burger" id="burger" aria-label="Otwórz menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <nav class="mobile-nav" id="mobileNav">
+        <ul>
+          <li><a class="navlink" href="#jak-to-dziala">Jak to działa</a></li>
+          <li><a class="navlink" href="#pakiety">Pakiety</a></li>
+          <li><a class="navlink" href="#zamow">Zamów</a></li>
+          <li>
+            <a
+              class="btn-gold"
+              href="#zamow"
+              style="display: block; text-align: center"
+              >Zamów piosenkę</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="rings">
+        <div class="ring r0"></div>
+        <div class="ring r1"></div>
+        <div class="ring r2"></div>
+        <div class="ring r3"></div>
+      </div>
+      <div class="hero-inner">
+        <p class="eyebrow">Piosenki na zamówienie • wspierane przez AI</p>
+        <h1>
+          Historia, którą <em>tylko Wy</em> znacie, zamieniona w piosenkę.
+        </h1>
+        <p class="lead">
+          Tworzymy tekst na podstawie Waszej historii i przy pomocy nowoczesnych
+          narzędzi AI komponujemy gotowy utwór — na urodziny, rocznicę,
+          zaręczyny czy zwyczajne „dziękuję”. Wybierz format i odbierz gotową
+          piosenkę nawet w kilka godzin.
+        </p>
+        <div class="ctas">
+          <a class="btn-gold" href="#zamow">Zamów swoją piosenkę</a>
+          <a class="btn-outline" href="#odtwarzacz">Posłuchaj przykładu</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="player-section" id="odtwarzacz">
+      <div class="player-card">
+        <div class="vinyl" id="vinyl">
+          <div class="ring1"></div>
+          <div class="ring2"></div>
+          <div class="dot"></div>
+        </div>
+        <div class="player-body">
+          <p class="eyebrow" style="margin-bottom: 4px">
+            Przykładowa realizacja
+          </p>
+          <h3>„Nasza droga” — piosenka rocznicowa</h3>
+          <div class="controls">
+            <button class="play-btn" id="playBtn" aria-label="Odtwórz">
+              <svg
+                id="iconPlay"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+              >
+                <path d="M3 2l11 6-11 6V2z" />
+              </svg>
+              <svg
+                id="iconPause"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                style="display: none"
+              >
+                <rect x="3" y="2" width="4" height="12" />
+                <rect x="9" y="2" width="4" height="12" />
+              </svg>
+            </button>
+            <div class="seek-wrap">
+              <!-- Podmień src na własny plik mp3, np. audio/sample-song.mp3 -->
+              <audio
+                id="audio"
+                src="audio/sample-song.mp3"
+                preload="metadata"
+              ></audio>
+              <input type="range" id="seek" min="0" max="100" value="0" />
+              <div class="time-row">
+                <span id="curTime">0:00</span><span id="durTime">0:00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="steps-section" id="jak-to-dziala">
+      <div class="section-head">
+        <p class="eyebrow" style="text-align: center">Proces</p>
+        <h2>Jak powstaje Twoja piosenka</h2>
+      </div>
+      <ol class="steps">
+        <li>
+          <span class="track">00:01</span>
+          <div>
+            <h3>Opowiadasz historię</h3>
+            <p>
+              Wypełniasz krótki formularz — piszesz o okazji, osobie i
+              szczegółach, które mają się znaleźć w tekście.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="track">00:47</span>
+          <div>
+            <h3>Tworzymy tekst i melodię</h3>
+            <p>
+              Na podstawie Twojej historii tworzymy tekst i dobieramy styl
+              muzyczny.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="track">01:03</span>
+          <div>
+            <h3>Generujemy i dopracowujemy nagranie</h3>
+            <p>
+              Przy pomocy zaawansowanych narzędzi AI (Suno) tworzymy kilka
+              wersji utworu, a następnie wybieramy i dopracowujemy tę najlepszą.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="track">01:44</span>
+          <div>
+            <h3>Odbierasz gotowy utwór</h3>
+            <p>
+              W zależności od pakietu (Air, Tape lub Pro) dostajesz link, plik
+              MP3 lub dedykowaną stronę z galerią zdjęć.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="packages-section" id="pakiety">
+      <div class="section-head">
+        <p class="eyebrow" style="text-align: center">Formaty</p>
+        <h2>Wybierz swój nośnik</h2>
+        <p
+          style="
+            max-width: 420px;
+            margin: 12px auto 0;
+            font-size: 0.875rem;
+            color: var(--muted);
+          "
+        >
+          Każdy pakiet zawiera pełną produkcję muzyczną — różni je forma, w
+          jakiej odbierasz utwór.
+        </p>
+      </div>
+      <div class="packages-grid">
+        <div class="pkg-card">
+          <p class="pkg-format">AIR</p>
+          <h3>Pakiet AIR</h3>
+          <p class="pkg-price">49 zł</p>
+          <p class="pkg-tagline">
+            Piosenka trafia w eter — dostajesz link do Twojej premiery na
+            YouTube.
+          </p>
+          <div class="pkg-features">
+            <div class="feat">
+              Autorska piosenka na podstawie Twojej historii
+            </div>
+            <div class="feat">
+              Publikacja na YouTube jako film niepubliczny (unlisted)
+            </div>
+            <div class="feat">Link do utworu wysłany na maila</div>
+          </div>
+          <!-- Przewija do formularza i zaznacza AIR jako wybrany pakiet -->
+          <button type="button" class="pkg-select" onclick="selectPkg('air')">
+            Wybieram AIR
+          </button>
+        </div>
+        <div class="pkg-card">
+          <p class="pkg-format">TAPE</p>
+          <h3>Pakiet TAPE</h3>
+          <p class="pkg-price">69 zł</p>
+          <p class="pkg-tagline">
+            Nagranie zostaje przy Tobie na zawsze — plik MP3 na własność.
+          </p>
+          <div class="pkg-features">
+            <div class="feat">Wszystko z pakietu AIR</div>
+            <div class="feat">
+              Plik MP3 w jakości studyjnej wysłany na maila
+            </div>
+            <div class="feat">Możliwość odtwarzania offline, bez internetu</div>
+          </div>
+          <button type="button" class="pkg-select" onclick="selectPkg('tape')">
+            Wybieram TAPE
+          </button>
+        </div>
+        <div class="pkg-card featured">
+          <span class="badge">Najpełniejsze doświadczenie</span>
+          <p class="pkg-format">PRO</p>
+          <h3>Pakiet PRO</h3>
+          <p class="pkg-price">139 zł</p>
+          <p class="pkg-tagline">
+            Pełna produkcja — dedykowana strona z piosenką i Waszymi zdjęciami.
+          </p>
+          <div class="pkg-features">
+            <div class="feat">Wszystko z pakietu TAPE</div>
+            <div class="feat">Prywatna strona internetowa z odtwarzaczem</div>
+            <div class="feat">Do 5 zdjęć w galerii na dedykowanej stronie</div>
+            <div class="feat">Unikalny link, którym możesz się podzielić</div>
+          </div>
+          <button type="button" class="pkg-select" onclick="selectPkg('pro')">
+            Wybieram PRO
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="order-section" id="zamow">
+      <div class="section-head">
+        <p class="eyebrow" style="text-align: center">Zamówienie</p>
+        <h2>Opowiedz nam swoją historię</h2>
+      </div>
+
+      <form id="orderForm" class="order-form">
+        <!-- Honeypot antyspamowy  -->
+        <input
+          type="checkbox"
+          name="botcheck"
+          class="hidden-field"
+          style="display: none"
+        />
+
+        <div>
+          <label class="field-label">Wybrany pakiet</label>
+          <div class="pkg-toggle" id="pkgToggle">
+            <button type="button" data-pkg="air" onclick="selectPkg('air')">
+              AIR · 49 zł
+            </button>
+            <button
+              type="button"
+              data-pkg="tape"
+              class="active"
+              onclick="selectPkg('tape')"
+            >
+              TAPE · 69 zł
+            </button>
+            <button type="button" data-pkg="pro" onclick="selectPkg('pro')">
+              PRO · 139 zł
+            </button>
+          </div>
+        </div>
+
+        <div class="row2">
+          <div>
+            <label class="field-label" for="buyerName"
+              >Twoje imię i nazwisko</label
+            >
+            <input
+              id="buyerName"
+              name="buyerName"
+              type="text"
+              maxlength="80"
+              required
+            />
+          </div>
+          <div>
+            <label class="field-label" for="buyerEmail">Twój e-mail</label>
+            <input
+              id="buyerEmail"
+              name="buyerEmail"
+              type="email"
+              maxlength="120"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="row2">
+          <div>
+            <label class="field-label" for="recipientName"
+              >Dla kogo jest piosenka?</label
+            >
+            <input
+              id="recipientName"
+              name="recipientName"
+              type="text"
+              placeholder="np. Kasia"
+              maxlength="80"
+              required
+            />
+          </div>
+          <div>
+            <label class="field-label" for="occasion">Okazja</label>
+            <input
+              id="occasion"
+              name="occasion"
+              type="text"
+              placeholder="np. 5. rocznica ślubu"
+              maxlength="120"
+              required
+            />
+          </div>
+        </div>
+
+        <div>
+          <label class="field-label" for="styleWishes"
+            >Styl i nastrój piosenki</label
+          >
+          <textarea
+            id="styleWishes"
+            name="styleWishes"
+            rows="2"
+            placeholder="np. spokojna ballada akustyczna, ciepły męski wokal"
+            maxlength="600"
+            required
+          ></textarea>
+        </div>
+
+        <div>
+          <label class="field-label" for="storyDetails"
+            >Historia i szczegóły do tekstu</label
+          >
+          <textarea
+            id="storyDetails"
+            name="storyDetails"
+            rows="5"
+            placeholder="Wspólne wspomnienia, żarty, imiona, miejsca — im więcej detali, tym bardziej osobisty tekst."
+            maxlength="1500"
+            required
+          ></textarea>
+        </div>
+
+        <div id="proStyleSection" style="display: none">
+          <label class="field-label"
+            >Styl dedykowanej strony (pakiet PRO)</label
+          >
+          <input
+            type="hidden"
+            id="styleVariant"
+            name="styleVariant"
+            value="winyl"
+          />
+          <div class="style-grid" id="styleGrid">
+            <label class="style-card active" data-variant="winyl">
+              <img
+                src="assets/warianty/wariant-1-winyl.jpg"
+                alt="Wariant Winyl"
+              />
+              <span class="style-name">Winyl</span>
+              <span class="style-desc">Klasyczny, elegancki</span>
+              <a
+                class="style-preview-link"
+                href="przyklady/wariant-1-winyl/index.html"
+                target="_blank"
+                rel="noopener"
+                >Zobacz żywy przykład ↗</a
+              >
+            </label>
+            <label class="style-card" data-variant="plyta">
+              <img
+                src="assets/warianty/wariant-2-plyta.jpg"
+                alt="Wariant Płyta / Notatnik"
+              />
+              <span class="style-name">Płyta / Notatnik</span>
+              <span class="style-desc">Sentymentalny, dziennikowy</span>
+              <a
+                class="style-preview-link"
+                href="przyklady/wariant-2-plyta/index.html"
+                target="_blank"
+                rel="noopener"
+                >Zobacz żywy przykład ↗</a
+              >
+            </label>
+            <label class="style-card" data-variant="kaseta">
+              <img
+                src="assets/warianty/wariant-3-kaseta.jpg"
+                alt="Wariant Kaseta / Mixtape"
+              />
+              <span class="style-name">Kaseta / Mixtape</span>
+              <span class="style-desc">Nostalgiczny, radosny</span>
+              <a
+                class="style-preview-link"
+                href="przyklady/wariant-3-kaseta/index.html"
+                target="_blank"
+                rel="noopener"
+                >Zobacz żywy przykład ↗</a
+              >
+            </label>
+            <label class="style-card" data-variant="polaroidy">
+              <img
+                src="assets/warianty/wariant-4-polaroidy.jpg"
+                alt="Wariant Polaroidy / Kolaż"
+              />
+              <span class="style-name">Polaroidy / Kolaż</span>
+              <span class="style-desc">Fotograficzny, żywy</span>
+              <a
+                class="style-preview-link"
+                href="przyklady/wariant-4-polaroidy/index.html"
+                target="_blank"
+                rel="noopener"
+                >Zobacz żywy przykład ↗</a
+              >
+            </label>
+          </div>
+          <p class="photo-note">
+            📸 <strong>Ważne:</strong> Jeśli wybrałeś/aś pakiet PRO, zdjęcia
+            (maks. 5) oraz dedykację (opcjonalnie) prześlij na
+            kontakt@studiopersona.pl
+          </p>
+        </div>
+
+        <div class="check-block">
+          <label class="check-row">
+            <input type="checkbox" id="acceptTerms" required />
+            <span
+              >Akceptuję
+              <a href="regulamin.html" target="_blank">regulamin</a> oraz
+              <a href="polityka-prywatnosci.html" target="_blank"
+                >politykę prywatności</a
+              >.</span
+            >
+          </label>
+          <label class="check-row">
+            <input type="checkbox" id="acceptNoWithdrawal" required />
+            <span
+              >Wiem, że realizacja mojej spersonalizowanej piosenki rozpoczyna
+              się od razu po płatności i wyrażam zgodę na wykonanie usługi przed
+              upływem terminu do odstąpienia od umowy — co oznacza utratę prawa
+              do odstąpienia od umowy.</span
+            >
+          </label>
+        </div>
+
+        <div class="h-captcha" data-captcha="true"></div>
+
+        <p id="formError" class="form-error" style="display: none"></p>
+
+        <button
+          type="submit"
+          id="submitBtn"
+          class="btn-gold"
+          style="width: 100%"
+        >
+          Przejdź do płatności
+        </button>
+        <p class="form-note">
+          Po wysłaniu zostaniesz przekierowany/a na bezpieczną stronę płatności
+          Stripe. Nie przechowujemy danych Twojej karty.
+        </p>
+        <p class="form-note">
+          Muzyka i wokal powstają przy użyciu generatywnej sztucznej
+          inteligencji (Suno), na podstawie tekstu dopasowanego do Twojej
+          historii — finalny wybór wersji zawsze przechodzi przez ręczną
+          selekcję.
+        </p>
+      </form>
+    </section>
+
+    <footer>
+      <div class="footer-inner">
+        <span
+          style="
+            font-family: &quot;Fraunces&quot;, serif;
+            font-style: italic;
+            color: var(--goldBright);
+          "
+          >Studio Persona</span
+        >
+        <div class="footer-links">
+          <a href="regulamin.html">Regulamin</a>
+          <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+          <a href="mailto:kontakt@studiopersona.pl">Kontakt</a>
+        </div>
+        <span>© 2026 Studio Persona</span>
+      </div>
+    </footer>
+
+    <div class="cookie-banner" id="cookieBanner">
+      <div class="cookie-inner">
+        <p>
+          Ta strona nie używa cookies analitycznych ani reklamowych i nie śledzi
+          Cię w internecie. Formularz zamówienia wysyła dane przez usługę
+          Web3Forms, a płatność obsługuje zewnętrzna strona Stripe — więcej w
+          <a href="polityka-prywatnosci.html">polityce prywatności</a>.
+        </p>
+        <button class="btn-gold" id="cookieOk">Rozumiem</button>
+      </div>
+    </div>
+
+    <script src="https://web3forms.com/client/script.js" async defer></script>
+    <script>
+      // ============================================================
+      // KONFIG STRIPE I WEB3FORMS
+      // ============================================================
+      // Acces Key do  Web3Forms
+      const WEB3FORMS_ACCESS_KEY = "0e85ff55-7ce1-4cd1-b855-ac8077046586";
+
+      // Linki Stripe do podmiany
+      const STRIPE_LINKS = {
+        air: "https://buy.stripe.com/test_00wdR91Qzdofh1w6gYd7q01",
+        tape: "https://buy.stripe.com/test_7sYeVdeDl2JBh1wcFmd7q02",
+        pro: "https://buy.stripe.com/test_6oU14ndzh1Fx9z4dJqd7q03",
+      };
+      // ============================================================
+
+      const burger = document.getElementById("burger");
+      const mobileNav = document.getElementById("mobileNav");
+      burger.addEventListener("click", () => {
+        burger.classList.toggle("open");
+        mobileNav.classList.toggle("open");
+      });
+      document.querySelectorAll(".mobile-nav a").forEach((a) =>
+        a.addEventListener("click", () => {
+          burger.classList.remove("open");
+          mobileNav.classList.remove("open");
+        }),
+      );
+
+      // Odtwarzacz - prawdziwy plik audio (podmień audio/sample-song.mp3)
+      const audio = document.getElementById("audio");
+      const playBtn = document.getElementById("playBtn");
+      const iconPlay = document.getElementById("iconPlay");
+      const iconPause = document.getElementById("iconPause");
+      const seek = document.getElementById("seek");
+      const curTime = document.getElementById("curTime");
+      const durTime = document.getElementById("durTime");
+      const vinyl = document.getElementById("vinyl");
+      function fmt(s) {
+        if (!isFinite(s)) return "0:00";
+        const m = Math.floor(s / 60),
+          sec = Math.floor(s % 60);
+        return m + ":" + String(sec).padStart(2, "0");
+      }
+      audio.addEventListener("loadedmetadata", () => {
+        durTime.textContent = fmt(audio.duration);
+      });
+      audio.addEventListener("timeupdate", () => {
+        curTime.textContent = fmt(audio.currentTime);
+        seek.value = audio.duration
+          ? (audio.currentTime / audio.duration) * 100
+          : 0;
+      });
+      audio.addEventListener("ended", () => {
+        playBtn.click();
+      });
+      playBtn.addEventListener("click", () => {
+        if (audio.paused) {
+          audio.play();
+          iconPlay.style.display = "none";
+          iconPause.style.display = "block";
+          vinyl.classList.add("spin");
+        } else {
+          audio.pause();
+          iconPlay.style.display = "block";
+          iconPause.style.display = "none";
+          vinyl.classList.remove("spin");
+        }
+      });
+      seek.addEventListener("input", (e) => {
+        if (audio.duration)
+          audio.currentTime = (e.target.value / 100) * audio.duration;
+      });
+
+      // Baner cookie zapis w localstorage
+      const KEY = "sp_cookie_notice_dismissed";
+      const banner = document.getElementById("cookieBanner");
+      if (localStorage.getItem(KEY)) banner.style.display = "none";
+      document.getElementById("cookieOk").addEventListener("click", () => {
+        localStorage.setItem(KEY, "1");
+        banner.style.display = "none";
+      });
+
+      // Wybór pakietu - zaznacza przycisk w formularzu i przewija do niego
+      let selectedPackage = "tape";
+      function selectPkg(id) {
+        selectedPackage = id;
+        document
+          .querySelectorAll("#pkgToggle button")
+          .forEach((b) => b.classList.toggle("active", b.dataset.pkg === id));
+        document.getElementById("proStyleSection").style.display =
+          id === "pro" ? "block" : "none";
+        document.getElementById("zamow").scrollIntoView({ behavior: "smooth" });
+      }
+
+      // Wybór stylu dedykowanej strony (tylko pakiet PRO)
+      document.querySelectorAll(".style-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          document
+            .querySelectorAll(".style-card")
+            .forEach((c) => c.classList.remove("active"));
+          card.classList.add("active");
+          document.getElementById("styleVariant").value = card.dataset.variant;
+        });
+      });
+
+      // Wysyłka formularza: Web3Forms -> przekierowanie do Stripe
+      const orderForm = document.getElementById("orderForm");
+      const submitBtn = document.getElementById("submitBtn");
+      const formError = document.getElementById("formError");
+
+      orderForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        formError.style.display = "none";
+
+        const acceptTerms = document.getElementById("acceptTerms").checked;
+        const acceptNoWithdrawal =
+          document.getElementById("acceptNoWithdrawal").checked;
+        if (!acceptTerms || !acceptNoWithdrawal) {
+          formError.textContent =
+            "Musisz zaakceptować obie zgody powyżej, żeby przejść dalej.";
+          formError.style.display = "block";
+          return;
+        }
+        if (orderForm.storyDetails.value.trim().length < 20) {
+          formError.textContent =
+            "Opisz historię trochę szerzej (min. 20 znaków) - to na jej podstawie powstanie tekst.";
+          formError.style.display = "block";
+          return;
+        }
+
+        const captchaResponse = orderForm.querySelector(
+          '[name="h-captcha-response"]',
+        );
+        if (!captchaResponse || !captchaResponse.value) {
+          formError.textContent =
+            "Potwierdź, że nie jesteś robotem (zaznacz captchę powyżej).";
+          formError.style.display = "block";
+          return;
+        }
+
+        const stripeLink = STRIPE_LINKS[selectedPackage];
+        if (!stripeLink || stripeLink.includes("PODMIEN")) {
+          formError.textContent =
+            "Płatności nie są jeszcze skonfigurowane. Skontaktuj się z nami mailowo.";
+          formError.style.display = "block";
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Wysyłam...";
+
+        const formData = new FormData(orderForm);
+        formData.append("access_key", WEB3FORMS_ACCESS_KEY);
+        formData.append(
+          "subject",
+          `Nowe zamówienie: ${selectedPackage.toUpperCase()} — ${orderForm.recipientName.value}`,
+        );
+        formData.append("package", selectedPackage);
+
+        try {
+          const res = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: { Accept: "application/json" },
+            body: formData,
+          });
+          const json = await res.json();
+          if (json.success) {
+            window.location.href = stripeLink;
+          } else {
+            throw new Error(json.message || "Nieznany błąd");
+          }
+        } catch (err) {
+          formError.textContent =
+            "Nie udało się wysłać formularza. Spróbuj ponownie lub napisz do nas mailem.";
+          formError.style.display = "block";
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Przejdź do płatności";
+        }
+      });
+    </script>
+  </body>
+</html>

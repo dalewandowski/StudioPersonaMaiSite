@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title id="pageTitleTag">Studio Persona</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --base: #0a0a0f;
+        --elevated: #131319;
+        --elevated2: #1b1b24;
+        --line: #2a2a35;
+        --gold: #cb7b3e;
+        --goldBright: #e8a868;
+        --violet: #6b4fa0;
+        --ink: #f5f3ee;
+        --muted: #9b97a8;
+        --label: #f1eadd;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      html,
+      body {
+        overflow-x: hidden;
+      }
+      body {
+        background: var(--base);
+        color: var(--ink);
+        font-family: "Inter", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      h1,
+      h2 {
+        font-family: "Fraunces", serif;
+        font-weight: 500;
+      }
+      .wrap {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .eyebrow {
+        font-family: "JetBrains Mono", monospace;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        font-size: 0.68rem;
+        color: var(--gold);
+      }
+
+      .hero {
+        text-align: center;
+        padding: 56px 0 20px;
+        position: relative;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: -40px 0 auto 0;
+        height: 420px;
+        z-index: -1;
+        background: radial-gradient(
+          circle at 50% 0%,
+          rgba(203, 123, 62, 0.2),
+          transparent 60%
+        );
+      }
+
+      /* KASETA */
+      .cassette-wrap {
+        margin: 28px auto 0;
+        max-width: 520px;
+      }
+      .cassette {
+        position: relative;
+        background: linear-gradient(180deg, #1b1b24, #0e0e14);
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        padding: 20px;
+        box-shadow: 0 30px 60px -24px rgba(0, 0, 0, 0.7);
+      }
+      .cassette-label {
+        background: var(--label);
+        border-radius: 8px;
+        padding: 16px 18px 20px;
+        position: relative;
+        overflow: hidden;
+      }
+      .cassette-label::before {
+        content: "";
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+        border: 1px solid rgba(10, 10, 15, 0.15);
+        border-radius: 4px;
+      }
+      .cassette-side {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.62rem;
+        letter-spacing: 0.18em;
+        color: var(--violet);
+        text-transform: uppercase;
+      }
+      .cassette-label h1 {
+        color: var(--base);
+        font-size: 1.5rem;
+        font-style: italic;
+        margin-top: 6px;
+        line-height: 1.2;
+      }
+      .cassette-label .occasion {
+        color: #5b5568;
+        font-size: 0.78rem;
+        margin-top: 4px;
+        font-family: "JetBrains Mono", monospace;
+      }
+      .reels-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 18px;
+        padding: 0 30px;
+      }
+      .reel {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background:
+          radial-gradient(
+            circle at center,
+            #2a2a35 0%,
+            #2a2a35 30%,
+            transparent 31%
+          ),
+          repeating-conic-gradient(#0a0a0f 0deg 12deg, #1b1b24 12deg 24deg);
+        border: 2px solid var(--gold);
+        position: relative;
+      }
+      .reel::after {
+        content: "";
+        position: absolute;
+        inset: 42%;
+        border-radius: 50%;
+        background: var(--goldBright);
+      }
+      .reel.spin {
+        animation: spin 2.2s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .tape-line {
+        flex: 1;
+        height: 2px;
+        background: var(--line);
+        margin: 0 14px;
+      }
+
+      .deck {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-top: 22px;
+        padding: 0 6px;
+      }
+      .play-btn {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        flex-shrink: 0;
+        background: linear-gradient(90deg, var(--gold), var(--goldBright));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--base);
+      }
+      .seek-wrap {
+        flex: 1;
+      }
+      input[type="range"] {
+        width: 100%;
+        accent-color: var(--gold);
+        height: 4px;
+        cursor: pointer;
+      }
+      .time-row {
+        display: flex;
+        justify-content: space-between;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.65rem;
+        color: var(--muted);
+        margin-top: 6px;
+      }
+      .song-title {
+        font-size: 0.85rem;
+        color: var(--ink);
+        font-family: "Fraunces", serif;
+      }
+      .download-link {
+        display: block;
+        text-align: center;
+        margin-top: 16px;
+        font-size: 0.72rem;
+        color: var(--gold);
+      }
+
+      /* NOTATKA */
+      .note {
+        max-width: 420px;
+        margin: 44px auto 0;
+        background: var(--label);
+        color: var(--base);
+        border-radius: 4px;
+        padding: 24px 24px 20px;
+        font-family: "Fraunces", serif;
+        font-style: italic;
+        font-size: 1rem;
+        line-height: 1.6;
+        transform: rotate(-1.4deg);
+        box-shadow: 0 18px 34px -16px rgba(0, 0, 0, 0.6);
+        position: relative;
+      }
+      .note::before {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%) rotate(-6deg);
+        width: 64px;
+        height: 22px;
+        background: rgba(232, 168, 104, 0.55);
+      }
+      .note .signature {
+        display: block;
+        margin-top: 12px;
+        font-style: normal;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.65rem;
+        letter-spacing: 0.08em;
+        color: #6b6478;
+        text-transform: uppercase;
+      }
+
+      /* TAŚMA FILMOWA - GALERIA POZIOMA */
+      .filmstrip-head {
+        text-align: center;
+        margin: 70px 0 20px;
+      }
+      .filmstrip-head h2 {
+        font-size: 1.4rem;
+      }
+      .filmstrip {
+        display: flex;
+        justify-content: center;
+        gap: 4px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding: 10px 20px 40px;
+      }
+      .frame {
+        scroll-snap-align: center;
+        flex-shrink: 0;
+        width: 220px;
+        background: #050507;
+        border-radius: 4px;
+        padding: 10px 10px 26px;
+        position: relative;
+        cursor: pointer;
+      }
+      .sprockets {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 4px;
+        margin-bottom: 6px;
+      }
+      .sprockets span {
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        background: var(--elevated2);
+        display: block;
+      }
+      .frame img {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        display: block;
+        border-radius: 2px;
+      }
+      .frame figcaption {
+        position: absolute;
+        bottom: 8px;
+        left: 14px;
+        right: 14px;
+        font-size: 0.68rem;
+        color: var(--muted);
+        font-family: "JetBrains Mono", monospace;
+      }
+
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 10, 15, 0.94);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+        padding: 20px;
+      }
+      .lightbox.open {
+        display: flex;
+      }
+      .lightbox img {
+        max-width: 100%;
+        max-height: 85vh;
+        border-radius: 12px;
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: var(--ink);
+        font-size: 1.8rem;
+        cursor: pointer;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px 20px 50px;
+        font-size: 0.7rem;
+        color: var(--muted);
+      }
+      footer a {
+        color: var(--gold);
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero wrap">
+      <p class="eyebrow">Studio Persona • mixtape dla Ciebie</p>
+    </section>
+
+    <div class="wrap">
+      <div class="cassette-wrap">
+        <div class="cassette">
+          <div class="cassette-label">
+            <p class="cassette-side">Side A</p>
+            <h1 id="recipientName"></h1>
+            <p class="occasion" id="occasion"></p>
+            <div class="reels-row">
+              <div class="reel" id="reelLeft"></div>
+              <div class="tape-line"></div>
+              <div class="reel" id="reelRight"></div>
+            </div>
+          </div>
+          <div class="deck">
+            <audio id="audio" preload="metadata"></audio>
+            <button class="play-btn" id="playBtn" aria-label="Odtwórz">
+              <svg
+                id="iconPlay"
+                width="13"
+                height="13"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+              >
+                <path d="M3 2l11 6-11 6V2z" />
+              </svg>
+              <svg
+                id="iconPause"
+                width="13"
+                height="13"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                style="display: none"
+              >
+                <rect x="3" y="2" width="4" height="12" />
+                <rect x="9" y="2" width="4" height="12" />
+              </svg>
+            </button>
+            <div class="seek-wrap">
+              <p class="song-title" id="songTitle"></p>
+              <input type="range" id="seek" min="0" max="100" value="0" />
+              <div class="time-row">
+                <span id="curTime">0:00</span><span id="durTime">0:00</span>
+              </div>
+            </div>
+          </div>
+          <a class="download-link" id="downloadLink" download
+            >Pobierz plik MP3 ↓</a
+          >
+        </div>
+
+        <div class="note" id="messageBlock">
+          <span id="dedicationText"></span>
+          <span class="signature" id="signatureText"></span>
+        </div>
+      </div>
+
+      <div class="filmstrip-head" id="galleryHead">
+        <p class="eyebrow">Klatka po klatce</p>
+        <h2>Wasze wspomnienia</h2>
+      </div>
+    </div>
+
+    <div class="filmstrip" id="gallery"></div>
+
+    <footer class="wrap">
+      Stworzone z miłością przez
+      <a id="footerLink" target="_blank" rel="noopener"></a>
+    </footer>
+
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+      <button
+        class="lightbox-close"
+        onclick="closeLightbox()"
+        aria-label="Zamknij"
+      >
+        &times;
+      </button>
+      <img id="lightboxImg" src="" alt="" />
+    </div>
+
+    <script src="config.js"></script>
+    <script>
+      document.getElementById("pageTitleTag").textContent = CONFIG.pageTitle;
+      document.getElementById("recipientName").innerHTML =
+        "Dla " + CONFIG.recipientName;
+      document.getElementById("occasion").textContent = CONFIG.occasion;
+      document.getElementById("songTitle").textContent =
+        "„" + CONFIG.songTitle + '"';
+
+      const audioEl = document.getElementById("audio");
+      audioEl.src = CONFIG.songFile;
+      document.getElementById("downloadLink").href = CONFIG.songFile;
+
+      const messageBlock = document.getElementById("messageBlock");
+      if (CONFIG.dedication && CONFIG.dedication.trim() !== "") {
+        document.getElementById("dedicationText").textContent =
+          "„" + CONFIG.dedication + '"';
+        document.getElementById("signatureText").textContent =
+          CONFIG.signature || "";
+      } else {
+        messageBlock.style.display = "none";
+      }
+
+      const galleryEl = document.getElementById("gallery");
+      const galleryHeadEl = document.getElementById("galleryHead");
+      if (CONFIG.photos && CONFIG.photos.length > 0) {
+        CONFIG.photos.forEach((photo) => {
+          const frame = document.createElement("figure");
+          frame.className = "frame";
+          frame.addEventListener("click", () => openLightbox(photo.src));
+          frame.innerHTML = `
+        <div class="sprockets">${"<span></span>".repeat(6)}</div>
+        <img src="${photo.src}" alt="${photo.caption || ""}" loading="lazy">
+        <figcaption>${photo.caption || ""}</figcaption>
+      `;
+          galleryEl.appendChild(frame);
+        });
+      } else {
+        galleryEl.style.display = "none";
+        galleryHeadEl.style.display = "none";
+      }
+
+      const footerLinkEl = document.getElementById("footerLink");
+      footerLinkEl.href = CONFIG.footerLinkUrl;
+      footerLinkEl.textContent = CONFIG.footerLinkLabel;
+
+      const audio = document.getElementById("audio");
+      const playBtn = document.getElementById("playBtn");
+      const iconPlay = document.getElementById("iconPlay");
+      const iconPause = document.getElementById("iconPause");
+      const seek = document.getElementById("seek");
+      const curTime = document.getElementById("curTime");
+      const durTime = document.getElementById("durTime");
+      const reelLeft = document.getElementById("reelLeft");
+      const reelRight = document.getElementById("reelRight");
+      function fmt(s) {
+        if (!isFinite(s)) return "0:00";
+        const m = Math.floor(s / 60),
+          sec = Math.floor(s % 60);
+        return m + ":" + String(sec).padStart(2, "0");
+      }
+      audio.addEventListener("loadedmetadata", () => {
+        durTime.textContent = fmt(audio.duration);
+      });
+      audio.addEventListener("timeupdate", () => {
+        curTime.textContent = fmt(audio.currentTime);
+        seek.value = audio.duration
+          ? (audio.currentTime / audio.duration) * 100
+          : 0;
+      });
+      audio.addEventListener("ended", () => {
+        playBtn.click();
+      });
+      playBtn.addEventListener("click", () => {
+        if (audio.paused) {
+          audio.play();
+          iconPlay.style.display = "none";
+          iconPause.style.display = "block";
+          reelLeft.classList.add("spin");
+          reelRight.classList.add("spin");
+        } else {
+          audio.pause();
+          iconPlay.style.display = "block";
+          iconPause.style.display = "none";
+          reelLeft.classList.remove("spin");
+          reelRight.classList.remove("spin");
+        }
+      });
+      seek.addEventListener("input", (e) => {
+        if (audio.duration)
+          audio.currentTime = (e.target.value / 100) * audio.duration;
+      });
+
+      function openLightbox(src) {
+        document.getElementById("lightboxImg").src = src;
+        document.getElementById("lightbox").classList.add("open");
+      }
+      function closeLightbox() {
+        document.getElementById("lightbox").classList.remove("open");
+      }
+    </script>
+  </body>
+</html>

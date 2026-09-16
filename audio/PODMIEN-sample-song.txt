@@ -1,0 +1,6 @@
+Wgraj tutaj plik o nazwie "sample-song.mp3" - to Twoja przykładowa piosenka
+odtwarzana w sekcji "Posłuchaj przykładu" na stronie głównej.
+
+Ścieżka docelowa: audio/sample-song.mp3
+
+Po wgraniu pliku możesz usunąć ten plik tekstowy.

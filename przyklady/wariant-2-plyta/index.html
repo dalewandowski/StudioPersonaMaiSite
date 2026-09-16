@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title id="pageTitleTag">Studio Persona</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --base: #0a0a0f;
+        --elevated: #131319;
+        --elevated2: #1b1b24;
+        --line: #2a2a35;
+        /* Wariant "Płyta": akcent fioletowy zamiast złota - bardziej literacki, introspekcyjny nastrój */
+        --gold: #8a6fc2;
+        --goldBright: #b39de0;
+        --violet: #6b4fa0;
+        --ink: #f5f3ee;
+        --muted: #9b97a8;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--base);
+        color: var(--ink);
+        font-family: "Inter", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      h1,
+      h2 {
+        font-family: "Fraunces", serif;
+        font-weight: 500;
+      }
+      .eyebrow {
+        font-family: "JetBrains Mono", monospace;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        color: var(--gold);
+      }
+
+      .layout {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      @media (min-width: 960px) {
+        .layout {
+          flex-direction: row;
+        }
+      }
+
+      /* LEWA KOLUMNA — OKŁADKA (sticky na desktopie) */
+      .cover-col {
+        position: relative;
+        padding: 36px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background:
+          radial-gradient(
+            circle at 15% 10%,
+            rgba(138, 111, 194, 0.22),
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 90% 90%,
+            rgba(138, 111, 194, 0.14),
+            transparent 45%
+          ),
+          var(--elevated);
+      }
+      @media (min-width: 960px) {
+        .cover-col {
+          width: 44%;
+          position: sticky;
+          top: 0;
+          height: 100vh;
+          padding: 60px;
+        }
+      }
+      .cover-art {
+        position: relative;
+        width: 100%;
+        max-width: 380px;
+        aspect-ratio: 1/1;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
+      }
+      .cover-art img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: saturate(0.9) brightness(0.75);
+      }
+      .cover-art .tint {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(10, 10, 15, 0.92),
+          rgba(10, 10, 15, 0.15) 55%,
+          rgba(107, 79, 160, 0.25)
+        );
+      }
+      .cover-art .ring {
+        position: absolute;
+        right: -46px;
+        bottom: -46px;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 1px solid rgba(179, 157, 224, 0.5);
+      }
+      .cover-art .ring2 {
+        position: absolute;
+        right: -30px;
+        bottom: -30px;
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        background: var(--base);
+        border: 1px solid rgba(179, 157, 224, 0.7);
+      }
+      .cover-art .ring2::after {
+        content: "";
+        position: absolute;
+        inset: 38%;
+        border-radius: 50%;
+        background: var(--gold);
+      }
+      .cover-text {
+        position: absolute;
+        left: 22px;
+        bottom: 22px;
+        right: 90px;
+      }
+      .cover-text .eyebrow {
+        color: var(--goldBright);
+      }
+      .cover-text h1 {
+        font-size: 1.7rem;
+        font-style: italic;
+        color: var(--ink);
+        margin-top: 6px;
+        line-height: 1.15;
+      }
+      .cover-text .occasion {
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin-top: 6px;
+      }
+
+      .cover-player {
+        width: 100%;
+        max-width: 380px;
+        margin-top: 24px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .play-btn {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        flex-shrink: 0;
+        background: linear-gradient(90deg, var(--gold), var(--goldBright));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--base);
+      }
+      .seek-wrap {
+        flex: 1;
+      }
+      input[type="range"] {
+        width: 100%;
+        accent-color: var(--gold);
+        height: 4px;
+        cursor: pointer;
+      }
+      .time-row {
+        display: flex;
+        justify-content: space-between;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.65rem;
+        color: var(--muted);
+        margin-top: 6px;
+      }
+      .song-title {
+        font-family: "Fraunces", serif;
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+        color: var(--ink);
+      }
+      .download-link {
+        display: block;
+        margin-top: 12px;
+        font-size: 0.72rem;
+        color: var(--gold);
+        text-align: center;
+      }
+
+      /* PRAWA KOLUMNA — NOTATKI */
+      .notes-col {
+        flex: 1;
+        padding: 60px 24px 80px;
+        max-width: 640px;
+        background: radial-gradient(
+          circle at 80% 0%,
+          rgba(138, 111, 194, 0.08),
+          transparent 40%
+        );
+      }
+      @media (min-width: 960px) {
+        .notes-col {
+          padding: 90px 70px 100px;
+        }
+      }
+
+      .dedication {
+        font-family: "Fraunces", serif;
+        font-style: italic;
+        font-size: 1.15rem;
+        line-height: 1.75;
+        color: var(--ink);
+        padding-left: 20px;
+        border-left: 2px solid var(--gold);
+        margin: 20px 0 50px;
+      }
+      .dedication .signature {
+        display: block;
+        margin-top: 14px;
+        font-style: normal;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        color: var(--gold);
+        text-transform: uppercase;
+      }
+
+      .timeline-head h2 {
+        font-size: 1.4rem;
+        margin-top: 8px;
+      }
+      .timeline {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+      }
+      .t-row {
+        display: flex;
+        gap: 20px;
+        padding: 20px 0;
+        border-top: 1px solid var(--line);
+        align-items: center;
+        cursor: pointer;
+      }
+      .t-row:last-child {
+        border-bottom: 1px solid var(--line);
+      }
+      .t-thumb {
+        width: 76px;
+        height: 76px;
+        border-radius: 12px;
+        overflow: hidden;
+        flex-shrink: 0;
+        background: var(--elevated2);
+      }
+      .t-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.3s;
+      }
+      .t-row:hover .t-thumb img {
+        transform: scale(1.08);
+      }
+      .t-index {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.7rem;
+        color: var(--gold);
+        width: 22px;
+        flex-shrink: 0;
+      }
+      .t-caption {
+        font-size: 0.9rem;
+        color: var(--ink);
+      }
+
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 10, 15, 0.94);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+        padding: 20px;
+      }
+      .lightbox.open {
+        display: flex;
+      }
+      .lightbox img {
+        max-width: 100%;
+        max-height: 85vh;
+        border-radius: 12px;
+      }
+      .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: var(--ink);
+        font-size: 1.8rem;
+        cursor: pointer;
+      }
+
+      footer {
+        text-align: center;
+        padding: 26px 20px 46px;
+        font-size: 0.7rem;
+        color: var(--muted);
+      }
+      footer a {
+        color: var(--gold);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <div class="cover-col">
+        <div class="cover-art">
+          <img id="coverImg" src="" alt="" />
+          <div class="tint"></div>
+          <div class="ring"></div>
+          <div class="ring2"></div>
+          <div class="cover-text">
+            <p class="eyebrow">Studio Persona</p>
+            <h1 id="recipientName"></h1>
+            <p class="occasion" id="occasion"></p>
+          </div>
+        </div>
+        <div class="cover-player">
+          <audio id="audio" preload="metadata"></audio>
+          <button class="play-btn" id="playBtn" aria-label="Odtwórz">
+            <svg
+              id="iconPlay"
+              width="13"
+              height="13"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+            >
+              <path d="M3 2l11 6-11 6V2z" />
+            </svg>
+            <svg
+              id="iconPause"
+              width="13"
+              height="13"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              style="display: none"
+            >
+              <rect x="3" y="2" width="4" height="12" />
+              <rect x="9" y="2" width="4" height="12" />
+            </svg>
+          </button>
+          <div class="seek-wrap">
+            <p class="song-title" id="songTitle"></p>
+            <input type="range" id="seek" min="0" max="100" value="0" />
+            <div class="time-row">
+              <span id="curTime">0:00</span><span id="durTime">0:00</span>
+            </div>
+          </div>
+        </div>
+        <a class="download-link" id="downloadLink" download
+          >Pobierz plik MP3 ↓</a
+        >
+      </div>
+
+      <div class="notes-col">
+        <div class="dedication" id="messageBlock">
+          <span id="dedicationText"></span>
+          <span class="signature" id="signatureText"></span>
+        </div>
+
+        <div class="timeline-head" id="galleryHead">
+          <p class="eyebrow">Ślad w czasie</p>
+          <h2>Wasze wspomnienia</h2>
+        </div>
+        <div class="timeline" id="gallery"></div>
+
+        <footer>
+          Stworzone z miłością przez
+          <a id="footerLink" target="_blank" rel="noopener"></a>
+        </footer>
+      </div>
+    </div>
+
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+      <button
+        class="lightbox-close"
+        onclick="closeLightbox()"
+        aria-label="Zamknij"
+      >
+        &times;
+      </button>
+      <img id="lightboxImg" src="" alt="" />
+    </div>
+
+    <script src="config.js"></script>
+    <script>
+      document.getElementById("pageTitleTag").textContent = CONFIG.pageTitle;
+      document.getElementById("recipientName").innerHTML =
+        "Dla " + CONFIG.recipientName;
+      document.getElementById("occasion").textContent = CONFIG.occasion;
+      document.getElementById("songTitle").textContent =
+        "„" + CONFIG.songTitle + '"';
+
+      const audioEl = document.getElementById("audio");
+      audioEl.src = CONFIG.songFile;
+      document.getElementById("downloadLink").href = CONFIG.songFile;
+
+      // Okładka = pierwsze zdjęcie z galerii (jeśli jest), inaczej ciemne tło
+      const coverImgEl = document.getElementById("coverImg");
+      if (CONFIG.photos && CONFIG.photos.length > 0) {
+        coverImgEl.src = CONFIG.photos[0].src;
+      }
+
+      const messageBlock = document.getElementById("messageBlock");
+      if (CONFIG.dedication && CONFIG.dedication.trim() !== "") {
+        document.getElementById("dedicationText").textContent =
+          "„" + CONFIG.dedication + '"';
+        document.getElementById("signatureText").textContent =
+          CONFIG.signature || "";
+      } else {
+        messageBlock.style.display = "none";
+      }
+
+      const galleryEl = document.getElementById("gallery");
+      const galleryHeadEl = document.getElementById("galleryHead");
+      if (CONFIG.photos && CONFIG.photos.length > 0) {
+        CONFIG.photos.forEach((photo, i) => {
+          const row = document.createElement("div");
+          row.className = "t-row";
+          row.addEventListener("click", () => openLightbox(photo.src));
+          row.innerHTML = `
+        <span class="t-index">${String(i + 1).padStart(2, "0")}</span>
+        <div class="t-thumb"><img src="${photo.src}" alt="${photo.caption || ""}" loading="lazy"></div>
+        <span class="t-caption">${photo.caption || ""}</span>
+      `;
+          galleryEl.appendChild(row);
+        });
+      } else {
+        galleryEl.style.display = "none";
+        galleryHeadEl.style.display = "none";
+      }
+
+      const footerLinkEl = document.getElementById("footerLink");
+      footerLinkEl.href = CONFIG.footerLinkUrl;
+      footerLinkEl.textContent = CONFIG.footerLinkLabel;
+
+      const audio = document.getElementById("audio");
+      const playBtn = document.getElementById("playBtn");
+      const iconPlay = document.getElementById("iconPlay");
+      const iconPause = document.getElementById("iconPause");
+      const seek = document.getElementById("seek");
+      const curTime = document.getElementById("curTime");
+      const durTime = document.getElementById("durTime");
+      function fmt(s) {
+        if (!isFinite(s)) return "0:00";
+        const m = Math.floor(s / 60),
+          sec = Math.floor(s % 60);
+        return m + ":" + String(sec).padStart(2, "0");
+      }
+      audio.addEventListener("loadedmetadata", () => {
+        durTime.textContent = fmt(audio.duration);
+      });
+      audio.addEventListener("timeupdate", () => {
+        curTime.textContent = fmt(audio.currentTime);
+        seek.value = audio.duration
+          ? (audio.currentTime / audio.duration) * 100
+          : 0;
+      });
+      audio.addEventListener("ended", () => {
+        playBtn.click();
+      });
+      playBtn.addEventListener("click", () => {
+        if (audio.paused) {
+          audio.play();
+          iconPlay.style.display = "none";
+          iconPause.style.display = "block";
+        } else {
+          audio.pause();
+          iconPlay.style.display = "block";
+          iconPause.style.display = "none";
+        }
+      });
+      seek.addEventListener("input", (e) => {
+        if (audio.duration)
+          audio.currentTime = (e.target.value / 100) * audio.duration;
+      });
+
+      function openLightbox(src) {
+        document.getElementById("lightboxImg").src = src;
+        document.getElementById("lightbox").classList.add("open");
+      }
+      function closeLightbox() {
+        document.getElementById("lightbox").classList.remove("open");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title id="pageTitleTag">Studio Persona</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --base: #0a0a0f;
+        --elevated: #131319;
+        --elevated2: #1b1b24;
+        --line: #2a2a35;
+        /* Wariant "Polaroidy": akcent koralowo-różowy zamiast złota - ciepły, żywy, fotograficzny */
+        --gold: #c97b63;
+        --goldBright: #e0a184;
+        --violet: #6b4fa0;
+        --ink: #f5f3ee;
+        --muted: #9b97a8;
+        --paper: #f1eadd;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--base);
+        color: var(--ink);
+        font-family: "Inter", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        padding-bottom: 86px;
+      }
+      h1,
+      h2 {
+        font-family: "Fraunces", serif;
+        font-weight: 500;
+      }
+      .wrap {
+        max-width: 820px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .eyebrow {
+        font-family: "JetBrains Mono", monospace;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        font-size: 0.68rem;
+        color: var(--goldBright);
+      }
+
+      /* HERO PEŁNOEKRANOWE ZDJĘCIE */
+      .photo-hero {
+        position: relative;
+        width: 100%;
+        height: 72vh;
+        min-height: 380px;
+        overflow: hidden;
+      }
+      .photo-hero img {
+        width: 100%;
+        height: 72vh;
+        object-fit: cover;
+        object-position: center 30%;
+        display: block;
+        filter: saturate(0.95) brightness(0.8);
+      }
+      .photo-hero .tint {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(10, 10, 15, 1) 5%,
+          rgba(10, 10, 15, 0.35) 55%,
+          rgba(10, 10, 15, 0.05)
+        );
+      }
+      .photo-hero .text {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0 24px 34px;
+        text-align: center;
+      }
+      .photo-hero h1 {
+        font-size: 2.1rem;
+        font-style: italic;
+        color: var(--ink);
+        margin-top: 10px;
+      }
+      .photo-hero .occasion {
+        color: var(--muted);
+        font-size: 0.9rem;
+        margin-top: 8px;
+      }
+      @media (min-width: 640px) {
+        .photo-hero h1 {
+          font-size: 2.7rem;
+        }
+      }
+
+      /* KOLAŻ */
+      .wrap {
+        position: relative;
+      }
+      .wrap::before {
+        content: "";
+        position: absolute;
+        top: -60px;
+        left: 0;
+        right: 0;
+        height: 340px;
+        z-index: -1;
+        pointer-events: none;
+        background: radial-gradient(
+          circle at 50% 0%,
+          rgba(201, 123, 99, 0.16),
+          transparent 60%
+        );
+      }
+      .collage-head {
+        text-align: center;
+        margin: 56px 0 30px;
+        position: relative;
+      }
+      .collage-head h2 {
+        font-size: 1.4rem;
+      }
+      .collage {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 26px 18px;
+        padding-bottom: 20px;
+      }
+      @media (min-width: 640px) {
+        .collage {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 34px 24px;
+        }
+      }
+
+      .polaroid {
+        background: var(--paper);
+        padding: 10px 10px 34px;
+        border-radius: 2px;
+        cursor: pointer;
+        box-shadow: 0 16px 30px -14px rgba(0, 0, 0, 0.6);
+        transition: transform 0.2s;
+      }
+      .polaroid:hover {
+        transform: translateY(-4px) rotate(0deg) !important;
+      }
+      .polaroid img {
+        width: 100%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        display: block;
+      }
+      .polaroid figcaption {
+        font-family: "Fraunces", serif;
+        font-style: italic;
+        font-size: 0.78rem;
+        color: #3a3542;
+        text-align: center;
+        margin-top: 10px;
+      }
+      .polaroid:nth-child(6n + 1) {
+        transform: rotate(-3deg);
+      }
+      .polaroid:nth-child(6n + 2) {
+        transform: rotate(2deg);
+      }
+      .polaroid:nth-child(6n + 3) {
+        transform: rotate(-1.5deg);
+      }
+      .polaroid:nth-child(6n + 4) {
+        transform: rotate(3deg);
+      }
+      .polaroid:nth-child(6n + 5) {
+        transform: rotate(-2.5deg);
+      }
+      .polaroid:nth-child(6n + 6) {
+        transform: rotate(1.5deg);
+      }
+
+      /* DEDYKACJA JAKO KARTKA W KOLAŻU */
+      .note-card {
+        background: var(--elevated);
+        border: 1px solid var(--line);
+        border-radius: 2px;
+        padding: 20px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-family: "Fraunces", serif;
+        font-style: italic;
+        font-size: 0.92rem;
+        line-height: 1.55;
+        color: var(--ink);
+        box-shadow: 0 16px 30px -14px rgba(0, 0, 0, 0.6);
+        transform: rotate(-2deg);
+      }
+      .note-card .signature {
+        display: block;
+        margin-top: 10px;
+        font-style: normal;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+        color: var(--gold);
+        text-transform: uppercase;
+      }
+
+      /* PŁYWAJĄCY PASEK ODTWARZACZA */
+      .float-player {
+        position: fixed;
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        max-width: 520px;
+        margin: 0 auto;
+        background: rgba(19, 19, 25, 0.9);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 10px 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        z-index: 50;
+        box-shadow: 0 20px 40px -16px rgba(0, 0, 0, 0.7);
+      }
+      .play-btn {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        flex-shrink: 0;
+        background: linear-gradient(90deg, var(--gold), var(--goldBright));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--base);
+      }
+      .float-mid {
+        flex: 1;
+        min-width: 0;
+      }
+      .song-title {
+        font-size: 0.72rem;
+        font-family: "JetBrains Mono", monospace;
+        color: var(--muted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      input[type="range"] {
+        width: 100%;
+        accent-color: var(--gold);
+        height: 3px;
+        cursor: pointer;
+        margin-top: 4px;
+      }
+      .download-link {
+        flex-shrink: 0;
+        font-size: 0.68rem;
+        color: var(--gold);
+        white-space: nowrap;
+      }
+
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 10, 15, 0.94);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+        padding: 20px;
+      }
+      .lightbox.open {
+        display: flex;
+      }
+      .lightbox img {
+        max-width: 100%;
+        max-height: 85vh;
+        border-radius: 12px;
+      }
+      .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: var(--ink);
+        font-size: 1.8rem;
+        cursor: pointer;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px 20px 20px;
+        font-size: 0.7rem;
+        color: var(--muted);
+      }
+      footer a {
+        color: var(--gold);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="photo-hero">
+      <img id="heroImg" src="" alt="" />
+      <div class="tint"></div>
+      <div class="text">
+        <p class="eyebrow">Studio Persona • dedykowana piosenka</p>
+        <h1 id="recipientName"></h1>
+        <p class="occasion" id="occasion"></p>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="collage-head" id="galleryHead">
+        <p class="eyebrow">Kolaż</p>
+        <h2>Wasze wspomnienia</h2>
+      </div>
+      <div class="collage" id="gallery"></div>
+
+      <footer>
+        Stworzone z miłością przez
+        <a id="footerLink" target="_blank" rel="noopener"></a>
+      </footer>
+    </div>
+
+    <div class="float-player">
+      <audio id="audio" preload="metadata"></audio>
+      <button class="play-btn" id="playBtn" aria-label="Odtwórz">
+        <svg
+          id="iconPlay"
+          width="12"
+          height="12"
+          viewBox="0 0 16 16"
+          fill="currentColor"
+        >
+          <path d="M3 2l11 6-11 6V2z" />
+        </svg>
+        <svg
+          id="iconPause"
+          width="12"
+          height="12"
+          viewBox="0 0 16 16"
+          fill="currentColor"
+          style="display: none"
+        >
+          <rect x="3" y="2" width="4" height="12" />
+          <rect x="9" y="2" width="4" height="12" />
+        </svg>
+      </button>
+      <div class="float-mid">
+        <span class="song-title" id="songTitle"></span>
+        <input type="range" id="seek" min="0" max="100" value="0" />
+      </div>
+      <a class="download-link" id="downloadLink" download>MP3 ↓</a>
+    </div>
+
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+      <button
+        class="lightbox-close"
+        onclick="closeLightbox()"
+        aria-label="Zamknij"
+      >
+        &times;
+      </button>
+      <img id="lightboxImg" src="" alt="" />
+    </div>
+
+    <script src="config.js"></script>
+    <script>
+      document.getElementById("pageTitleTag").textContent = CONFIG.pageTitle;
+      document.getElementById("recipientName").innerHTML =
+        "Dla " + CONFIG.recipientName;
+      document.getElementById("occasion").textContent = CONFIG.occasion;
+      document.getElementById("songTitle").textContent =
+        "„" + CONFIG.songTitle + '"';
+
+      const audioEl = document.getElementById("audio");
+      audioEl.src = CONFIG.songFile;
+      document.getElementById("downloadLink").href = CONFIG.songFile;
+
+      const heroImgEl = document.getElementById("heroImg");
+      if (CONFIG.photos && CONFIG.photos.length > 0) {
+        heroImgEl.src = CONFIG.photos[0].src;
+      }
+
+      const galleryEl = document.getElementById("gallery");
+      const galleryHeadEl = document.getElementById("galleryHead");
+      const hasPhotos = CONFIG.photos && CONFIG.photos.length > 0;
+      const hasDedication =
+        CONFIG.dedication && CONFIG.dedication.trim() !== "";
+
+      if (hasPhotos) {
+        // Pomijamy pierwsze zdjęcie w kolażu (jest już w hero)
+        CONFIG.photos.slice(1).forEach((photo) => {
+          const fig = document.createElement("figure");
+          fig.className = "polaroid";
+          fig.addEventListener("click", () => openLightbox(photo.src));
+          fig.innerHTML = `<img src="${photo.src}" alt="${photo.caption || ""}" loading="lazy"><figcaption>${photo.caption || ""}</figcaption>`;
+          galleryEl.appendChild(fig);
+        });
+      }
+
+      // Dedykacja jako kartka wmieszana w kolaż
+      if (hasDedication) {
+        const note = document.createElement("div");
+        note.className = "note-card";
+        note.innerHTML = `<div><span>„${CONFIG.dedication}"</span><span class="signature">${CONFIG.signature || ""}</span></div>`;
+        galleryEl.insertBefore(
+          note,
+          galleryEl.children[Math.min(1, galleryEl.children.length)],
+        );
+      }
+
+      if (!hasPhotos && !hasDedication) {
+        galleryEl.style.display = "none";
+        galleryHeadEl.style.display = "none";
+      }
+
+      const footerLinkEl = document.getElementById("footerLink");
+      footerLinkEl.href = CONFIG.footerLinkUrl;
+      footerLinkEl.textContent = CONFIG.footerLinkLabel;
+
+      const audio = document.getElementById("audio");
+      const playBtn = document.getElementById("playBtn");
+      const iconPlay = document.getElementById("iconPlay");
+      const iconPause = document.getElementById("iconPause");
+      const seek = document.getElementById("seek");
+      function fmt(s) {
+        if (!isFinite(s)) return "0:00";
+        const m = Math.floor(s / 60),
+          sec = Math.floor(s % 60);
+        return m + ":" + String(sec).padStart(2, "0");
+      }
+      audio.addEventListener("timeupdate", () => {
+        seek.value = audio.duration
+          ? (audio.currentTime / audio.duration) * 100
+          : 0;
+      });
+      audio.addEventListener("ended", () => {
+        playBtn.click();
+      });
+      playBtn.addEventListener("click", () => {
+        if (audio.paused) {
+          audio.play();
+          iconPlay.style.display = "none";
+          iconPause.style.display = "block";
+        } else {
+          audio.pause();
+          iconPlay.style.display = "block";
+          iconPause.style.display = "none";
+        }
+      });
+      seek.addEventListener("input", (e) => {
+        if (audio.duration)
+          audio.currentTime = (e.target.value / 100) * audio.duration;
+      });
+
+      function openLightbox(src) {
+        document.getElementById("lightboxImg").src = src;
+        document.getElementById("lightbox").classList.add("open");
+      }
+      function closeLightbox() {
+        document.getElementById("lightbox").classList.remove("open");
+      }
+    </script>
+  </body>
+</html>
