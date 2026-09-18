@@ -26,10 +26,7 @@
       content="Zamów autorską, spersonalizowaną piosenkę na prezent — na urodziny, rocznicę, zaręczyny czy ślub. Gotowy utwór nawet w kilka godzin."
     />
     <!-- PODMIEN: dodaj własny obrazek 1200x630px i wgraj do assets/og-image.jpg -->
-    <meta
-      property="og:image"
-      content="https://studiopersona.pl/assets/og-image.jpg"
-    />
+    <meta property="og:image" content="/assets/IMG_5588.PNG" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta
@@ -675,6 +672,9 @@
         color: var(--gold);
         text-decoration: underline;
       }
+      .check-row strong {
+        color: var(--goldBright);
+      }
       .form-error {
         color: #f87171;
         font-size: 0.8rem;
@@ -1268,6 +1268,17 @@
             (maks. 5) oraz dedykację (opcjonalnie) prześlij na
             kontakt@studiopersona.pl
           </p>
+          <label class="check-row" style="margin-top: 12px">
+            <input type="checkbox" id="acceptProLink" />
+            <span
+              >Rozumiem, że dedykowana strona z galerią zdjęć będzie dostępna
+              pod unikalnym linkiem, który
+              <strong>nie jest zabezpieczony hasłem</strong> — każda osoba,
+              która ten link otrzyma, będzie mogła go otworzyć. Nie polecam
+              udostępniania tego linku publicznie (np. w social mediach bez
+              ograniczenia grona odbiorców).</span
+            >
+          </label>
         </div>
 
         <div class="check-block">
@@ -1377,7 +1388,6 @@
         }),
       );
 
-      // Odtwarzacz - prawdziwy plik audio (podmień audio/sample-song.mp3)
       const audio = document.getElementById("audio");
       const playBtn = document.getElementById("playBtn");
       const iconPlay = document.getElementById("iconPlay");
@@ -1422,7 +1432,6 @@
           audio.currentTime = (e.target.value / 100) * audio.duration;
       });
 
-      // Baner cookie zapis w localstorage
       const KEY = "sp_cookie_notice_dismissed";
       const banner = document.getElementById("cookieBanner");
       if (localStorage.getItem(KEY)) banner.style.display = "none";
@@ -1431,7 +1440,6 @@
         banner.style.display = "none";
       });
 
-      // Wybór pakietu - zaznacza przycisk w formularzu i przewija do niego
       let selectedPackage = "tape";
       function selectPkg(id) {
         selectedPackage = id;
@@ -1443,7 +1451,6 @@
         document.getElementById("zamow").scrollIntoView({ behavior: "smooth" });
       }
 
-      // Wybór stylu dedykowanej strony (tylko pakiet PRO)
       document.querySelectorAll(".style-card").forEach((card) => {
         card.addEventListener("click", () => {
           document
@@ -1454,7 +1461,6 @@
         });
       });
 
-      // Wysyłka formularza: Web3Forms -> przekierowanie do Stripe
       const orderForm = document.getElementById("orderForm");
       const submitBtn = document.getElementById("submitBtn");
       const formError = document.getElementById("formError");
@@ -1472,6 +1478,18 @@
           formError.style.display = "block";
           return;
         }
+
+        if (selectedPackage === "pro") {
+          const acceptProLink =
+            document.getElementById("acceptProLink").checked;
+          if (!acceptProLink) {
+            formError.textContent =
+              "Zaznacz zgodę dotyczącą dedykowanej strony (pakiet PRO), żeby przejść dalej.";
+            formError.style.display = "block";
+            return;
+          }
+        }
+
         if (orderForm.storyDetails.value.trim().length < 20) {
           formError.textContent =
             "Opisz historię trochę szerzej (min. 20 znaków) - to na jej podstawie powstanie tekst.";
@@ -1501,6 +1519,10 @@
         submitBtn.textContent = "Wysyłam...";
 
         const formData = new FormData(orderForm);
+
+        if (selectedPackage !== "pro") {
+          formData.delete("styleVariant");
+        }
         formData.append("access_key", WEB3FORMS_ACCESS_KEY);
         formData.append(
           "subject",

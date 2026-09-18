@@ -12,16 +12,17 @@
     />
     <style>
       :root {
-        --base: #0a0a0f;
-        --elevated: #131319;
-        --elevated2: #1b1b24;
-        --line: #2a2a35;
-        --gold: #cb7b3e;
-        --goldBright: #e8a868;
-        --violet: #6b4fa0;
-        --ink: #f5f3ee;
-        --muted: #9b97a8;
-        --label: #f1eadd;
+        --base: #2b0e16;
+        --elevated: #3a141e;
+        --elevated2: #481a26;
+        --line: #5c2432;
+        /* Wariant "Kaseta": akcent milosny - mixtape z sercem, gleboka czerwien + roz */
+        --gold: #e0475a;
+        --goldBright: #ff8fa3;
+        --violet: #b4677a;
+        --ink: #fbefef;
+        --muted: #b98e95;
+        --label: #f3e4e6;
       }
       * {
         box-sizing: border-box;
@@ -269,7 +270,8 @@
       .filmstrip {
         display: flex;
         justify-content: center;
-        gap: 4px;
+        flex-wrap: wrap;
+        gap: 15px;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         padding: 10px 20px 40px;
@@ -332,7 +334,6 @@
         max-height: 85vh;
         border-radius: 12px;
       }
-
       .lightbox-close {
         position: absolute;
         top: 20px;

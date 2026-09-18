@@ -1,0 +1,1 @@
+PODMIEN - wgraj tu zdjęcia klienta (jpg/png), nazwy zgodne z config.js

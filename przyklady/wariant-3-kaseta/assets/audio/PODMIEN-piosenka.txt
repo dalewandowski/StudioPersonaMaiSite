@@ -1,0 +1,1 @@
+PODMIEN - wgraj tu plik piosenki (mp3), nazwa zgodna z config.js -> songFile
