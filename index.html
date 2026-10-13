@@ -8,7 +8,7 @@
     </title>
     <meta
       name="description"
-      content="Zamów autorską, spersonalizowaną piosenkę na prezent — na urodziny, rocznicę, zaręczyny czy ślub. Trzy pakiety: AIR, TAPE i PRO, już od 49 zł. Gotowy utwór nawet w kilka godzin."
+      content="Zamów autorską, spersonalizowaną piosenkę na prezent — na urodziny, rocznicę, zaręczyny czy ślub. Trzy pakiety: AIR, TAPE i PRO, już od 49 zł. Gotowy utwór nawet w 48 godzin."
     />
     <link rel="canonical" href="https://studiopersona.pl/" />
     <meta name="robots" content="index, follow" />
@@ -23,10 +23,10 @@
     />
     <meta
       property="og:description"
-      content="Zamów autorską, spersonalizowaną piosenkę na prezent — na urodziny, rocznicę, zaręczyny czy ślub. Gotowy utwór nawet w kilka godzin."
+      content="Zamów autorską, spersonalizowaną piosenkę na prezent — na urodziny, rocznicę, zaręczyny czy ślub. Gotowy utwór nawet w 48 godzin."
     />
 
-    <meta property="og:image" content="/assets/og-image.jpg" />
+    <meta property="og:image" content="https://studiopersona.pl/assets/og-image.jpg" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta
@@ -443,6 +443,67 @@
         font-size: 0.7rem;
         color: var(--muted);
         margin-top: 8px;
+      }
+
+      /* Lista przykladowych piosenek (dane w piosenki-config.js) */
+      .playlist {
+        list-style: none;
+        margin: 14px 0 0;
+        padding: 0;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        overflow: hidden;
+        background: var(--elevated);
+      }
+      .playlist li + li {
+        border-top: 1px solid var(--line);
+      }
+      .pl-track {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 14px 18px;
+        background: none;
+        border: none;
+        color: var(--ink);
+        font: inherit;
+        text-align: left;
+        cursor: pointer;
+      }
+      .pl-track:hover,
+      .pl-track:focus-visible {
+        background: rgba(201, 161, 92, 0.07);
+        outline: none;
+      }
+      .pl-track .num {
+        width: 22px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.75rem;
+        color: var(--muted);
+        text-align: center;
+        flex-shrink: 0;
+      }
+      .pl-track .t-title {
+        display: block;
+        font-size: 0.95rem;
+      }
+      .pl-track .t-occ {
+        display: block;
+        font-size: 0.75rem;
+        color: var(--muted);
+        margin-top: 2px;
+      }
+      .pl-track.active .t-title,
+      .pl-track.active .num {
+        color: var(--goldBright);
+      }
+      /* dłuższe opisy okazji: zwykłe litery zamiast wersalików */
+      #trackOcc {
+        text-transform: none;
+        letter-spacing: 0.04em;
+        font-size: 0.8rem;
+        line-height: 1.5;
       }
 
       .steps-section {
@@ -889,7 +950,7 @@
           Tworzymy tekst na podstawie Waszej historii i przy pomocy nowoczesnych
           narzędzi AI komponujemy gotowy utwór — na urodziny, rocznicę,
           zaręczyny czy zwyczajne „dziękuję”. Wybierz format i odbierz gotową
-          piosenkę nawet w kilka godzin.
+          piosenkę nawet w 48 godzin.
         </p>
         <div class="ctas">
           <a class="btn-gold" href="#zamow">Zamów swoją piosenkę</a>
@@ -906,10 +967,10 @@
           <div class="dot"></div>
         </div>
         <div class="player-body">
-          <p class="eyebrow" style="margin-bottom: 4px">
+          <p class="eyebrow" style="margin-bottom: 4px" id="trackOcc">
             Przykładowa realizacja
           </p>
-          <h3>„Nasza droga” — piosenka rocznicowa</h3>
+          <h3 id="trackTitle">Przykładowa piosenka</h3>
           <div class="controls">
             <button class="play-btn" id="playBtn" aria-label="Odtwórz">
               <svg
@@ -934,12 +995,7 @@
               </svg>
             </button>
             <div class="seek-wrap">
-              <!-- Podmień src na własny plik mp3, np. audio/sample-song.mp3 -->
-              <audio
-                id="audio"
-                src="audio/sample-song.mp3"
-                preload="metadata"
-              ></audio>
+              <audio id="audio" preload="none"></audio>
               <input type="range" id="seek" min="0" max="100" value="0" />
               <div class="time-row">
                 <span id="curTime">0:00</span><span id="durTime">0:00</span>
@@ -948,6 +1004,7 @@
           </div>
         </div>
       </div>
+      <ul class="playlist" id="playlist" aria-label="Przykładowe piosenki"></ul>
     </section>
 
     <section class="steps-section" id="jak-to-dziala">
@@ -1374,6 +1431,7 @@
       </div>
     </div>
 
+    <script src="piosenki-config.js"></script>
     <script>
       // ============================================================
       // KONFIG STRIPE I WEB3FORMS
@@ -1416,6 +1474,70 @@
           sec = Math.floor(s % 60);
         return m + ":" + String(sec).padStart(2, "0");
       }
+      // Lista przykładów jest w pliku piosenki-config.js (SAMPLE_SONGS)
+      const TRACKS = typeof SAMPLE_SONGS !== "undefined" ? SAMPLE_SONGS : [];
+      const trackTitle = document.getElementById("trackTitle");
+      const trackOcc = document.getElementById("trackOcc");
+      const playlistEl = document.getElementById("playlist");
+      let current = 0;
+
+      function setPlayingUI(on) {
+        iconPlay.style.display = on ? "none" : "block";
+        iconPause.style.display = on ? "block" : "none";
+        vinyl.classList.toggle("spin", on);
+        playBtn.setAttribute("aria-label", on ? "Pauza" : "Odtwórz");
+      }
+      function markActive() {
+        playlistEl.querySelectorAll(".pl-track").forEach((b, n) => {
+          b.classList.toggle("active", n === current);
+          b.setAttribute("aria-current", n === current ? "true" : "false");
+        });
+      }
+      function loadTrack(n, autoplay) {
+        current = n;
+        const t = TRACKS[n];
+        audio.src = t.file;
+        trackTitle.textContent = "„" + t.title + "”";
+        trackOcc.textContent = "Przykład: " + t.occasion;
+        curTime.textContent = "0:00";
+        durTime.textContent = "0:00";
+        seek.value = 0;
+        markActive();
+        if (autoplay) {
+          audio
+            .play()
+            .then(() => setPlayingUI(true))
+            .catch(() => setPlayingUI(false));
+        } else {
+          setPlayingUI(false);
+        }
+      }
+      TRACKS.forEach((t, n) => {
+        const li = document.createElement("li");
+        li.innerHTML =
+          '<button type="button" class="pl-track"><span class="num">' +
+          (n + 1) +
+          '</span><span><span class="t-title"></span><span class="t-occ"></span></span></button>';
+        li.querySelector(".t-title").textContent = t.title;
+        li.querySelector(".t-occ").textContent = t.occasion;
+        li.querySelector("button").addEventListener("click", () => {
+          if (n === current && audio.src && !audio.paused) {
+            audio.pause();
+            setPlayingUI(false);
+          } else if (n === current && audio.src) {
+            audio
+              .play()
+              .then(() => setPlayingUI(true))
+              .catch(() => {});
+          } else {
+            loadTrack(n, true);
+          }
+        });
+        playlistEl.appendChild(li);
+      });
+      if (TRACKS.length) loadTrack(0, false);
+      else document.getElementById("odtwarzacz").style.display = "none";
+
       audio.addEventListener("loadedmetadata", () => {
         durTime.textContent = fmt(audio.duration);
       });
@@ -1426,19 +1548,19 @@
           : 0;
       });
       audio.addEventListener("ended", () => {
-        playBtn.click();
+        if (current < TRACKS.length - 1) loadTrack(current + 1, true);
+        else loadTrack(0, false);
       });
       playBtn.addEventListener("click", () => {
+        if (!TRACKS.length) return;
         if (audio.paused) {
-          audio.play();
-          iconPlay.style.display = "none";
-          iconPause.style.display = "block";
-          vinyl.classList.add("spin");
+          audio
+            .play()
+            .then(() => setPlayingUI(true))
+            .catch(() => setPlayingUI(false));
         } else {
           audio.pause();
-          iconPlay.style.display = "block";
-          iconPause.style.display = "none";
-          vinyl.classList.remove("spin");
+          setPlayingUI(false);
         }
       });
       seek.addEventListener("input", (e) => {
